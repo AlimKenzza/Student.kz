@@ -25,6 +25,8 @@ public class ClubResource implements MainResource{
         }
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
     @Override
     public List<Club> list() {
         return dao.fetch();
