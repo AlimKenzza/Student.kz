@@ -6,7 +6,7 @@ import model.Club;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
+import java.util.Stack;
 
 @Path("/clubs")
 public class ClubResource implements MainResource{
@@ -26,7 +26,7 @@ public class ClubResource implements MainResource{
     }
 
     @Override
-    public List<Club> list() {
+    public Stack<Club> list() {
         return dao.fetch();
     }
 
