@@ -1,8 +1,7 @@
 package Recources;
 
-import dao.DB;
-import model.Clubs;
-import model.Students;
+import dao.StudentDao;
+import model.Student;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -11,14 +10,14 @@ import java.util.List;
 
 @Path("/students")
 public class StudentResource implements MainResource {
-    private DB db = new DB();
+    private StudentDao dao = new StudentDao();
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Override
     public Response get(@PathParam("id") int id) {
-        Students student = db.getById(id);
+        Student student = dao.get(id);
         if (student != null) {
             return Response.ok(student, MediaType.APPLICATION_JSON).build();
         } else {
@@ -30,24 +29,24 @@ public class StudentResource implements MainResource {
     @Path("{id}")
     @Override
     public void deleteById(@PathParam("id") int id) {
-        db.deleteStudentById(id);
+        dao.delete(id);
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Override
-    public List<Students> list() {
-        return db.listAll();
+    public List<Student> list() {
+        return dao.fetch();
     }
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void addStudent(Students student) {
-        db.addStudent(student);
+    public void addStudent(Student student) {
+        dao.add(student);
     }
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public void update(Students student) {
-        db.updateStudent(student);
+    public void update(Student student) {
+        dao.edit(student);
     }
 }
 

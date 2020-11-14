@@ -1,6 +1,6 @@
 package servlets;
 
-import dao.DB;
+import dao.StudentDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,11 +13,11 @@ import java.io.IOException;
 
 @WebServlet(name = "LoginServlet")
 public class LoginServlet extends HttpServlet {
-    DB db = new DB();
+    StudentDao dao = new StudentDao();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        if(DB.checkStudent(username,password)) {
+        if(dao.checkStudent(username,password)) {
             HttpSession session = request.getSession(true);
             session.setAttribute("username", username);
             response.sendRedirect(request.getContextPath() + "/MainServlet");

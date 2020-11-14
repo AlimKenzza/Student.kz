@@ -1,7 +1,7 @@
 package Recources;
 
-import dao.DB;
-import model.Clubs;
+import dao.ClubDao;
+import model.Club;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -10,13 +10,13 @@ import java.util.List;
 
 @Path("/clubs")
 public class ClubResource implements MainResource{
-    private DB db = new DB();
+    private ClubDao dao = new ClubDao();
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Override
     public Response get(@PathParam("id") int id) {
-        Clubs club = db.getByClubId(id);
+        Club club = dao.get(id);
         if(club != null) {
             return Response.ok(club,MediaType.APPLICATION_JSON_TYPE).build();
         }
@@ -26,25 +26,25 @@ public class ClubResource implements MainResource{
     }
 
     @Override
-    public List<Clubs> list() {
-        return db.listAllClubs();
+    public List<Club> list() {
+        return dao.fetch();
     }
 
     @DELETE
     @Path("{id}")
     @Override
     public void deleteById(@PathParam("id") int id) {
-        db.deleteClubById(id);
+        dao.delete(id);
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void add(Clubs club) {
-        db.addClub(club);
+    public void add(Club club) {
+        dao.add(club);
     }
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public void update(Clubs club) {
-        db.updateClub(club);
+    public void update(Club club) {
+        dao.edit(club);
     }
 }

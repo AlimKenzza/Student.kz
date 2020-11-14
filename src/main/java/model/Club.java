@@ -1,19 +1,19 @@
 package model;
 
-public class Clubs {
+public class Club {
     private int clubId;
     private String clubName;
     private int memberCount;
     private String leader;
 
-    public Clubs(int clubId, String clubName, int memberCount, String leader) {
+    public Club() {
+    }
+
+    public Club(int clubId, String clubName, int memberCount, String leader) {
         this.clubId = clubId;
         this.clubName = clubName;
         this.memberCount = memberCount;
         this.leader = leader;
-    }
-
-    public Clubs() {
     }
 
     public int getClubId() {

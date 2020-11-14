@@ -3,11 +3,14 @@ package model;
 import java.util.Date;
 
 public class News {
-    int postId;
-    String title;
-    String body;
-    int clubId;
-    Date postDate;
+    private int postId;
+    private String title;
+    private String body;
+    private int clubId;
+    private Date postDate;
+
+    public News() {
+    }
 
     public News(int postId, String title, String body, int clubId, Date postDate) {
         this.postId = postId;

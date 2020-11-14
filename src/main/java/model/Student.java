@@ -1,14 +1,22 @@
 package model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-
-public class Students {
+public class Student {
     private int studentId;
     private String firstName;
     private String lastName;
     private String email;
     private int groupId;
+
+    public Student() {
+    }
+
+    public Student(int studentId, String firstName, String lastName, String email, int groupId) {
+        this.studentId = studentId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.groupId = groupId;
+    }
 
     public int getStudentId() {
         return studentId;
@@ -50,14 +58,4 @@ public class Students {
         this.groupId = groupId;
     }
 
-    public Students(int studentId, String firstName, String lastName, String email, int groupId) {
-        this.studentId = studentId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.groupId = groupId;
-    }
-
-    public Students() {
-    }
 }
