@@ -111,4 +111,96 @@ public class DB {
         }
         return club;
     }
+    public void deleteStudentById(Integer id) {
+        try {
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM students WHERE student_id = ?");
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            connection.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void deleteClubById(Integer id) {
+        try {
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM clubs WHERE club_id = ?");
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            connection.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void addClub(Clubs club)  {
+        try {
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("Insert into clubs(club_id, club_name, members_count,leader) VALUES (?,?,?,?)");
+            preparedStatement.setInt(1, club.getClubId());
+            preparedStatement.setString(2, club.getClubName());
+            preparedStatement.setInt(3,club.getMemberCount());
+            preparedStatement.setString(4,club.getLeader());
+            preparedStatement.executeUpdate();
+            System.out.println("Club successfully added.");
+            connection.close();
+            preparedStatement.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void addStudent(Students student)  {
+        try {
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("Insert into students(student_id, fname, lname,email,group_id) VALUES (?,?,?,?,?)");
+            preparedStatement.setInt(1, student.getStudentId());
+            preparedStatement.setString(2, student.getFirstName());
+            preparedStatement.setString(3,student.getLastName());
+            preparedStatement.setString(4,student.getEmail());
+            preparedStatement.setInt(5, student.getGroupId());
+            preparedStatement.executeUpdate();
+            System.out.println("Student successfully added.");
+            connection.close();
+            preparedStatement.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void updateStudent(Students student) {
+        try {
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE students SET fname = ?, lname = ?, email = ?, group_id = ? WHERE student_id = ?");
+            preparedStatement.setString(1, student.getFirstName());
+            preparedStatement.setString(2,student.getLastName());
+            preparedStatement.setString(3,student.getEmail());
+            preparedStatement.setInt(4,student.getGroupId());
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            connection.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void updateClub(Clubs club) {
+        try {
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE clubs SET club_name = ?, members_count = ?, leader = ? WHERE club_id = ?");
+            preparedStatement.setString(1, club.getClubName());
+            preparedStatement.setInt(2, club.getMemberCount());
+            preparedStatement.setString(3, club.getLeader());
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            connection.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

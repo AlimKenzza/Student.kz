@@ -1,3 +1,5 @@
+package Recources;
+
 import dao.DB;
 import model.Clubs;
 
@@ -7,16 +9,12 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/clubs")
-public class ClubResource {
+public class ClubResource implements MainResource{
     private DB db = new DB();
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Clubs> list() {
-        return db.listAllClubs();
-    }
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
+    @Override
     public Response get(@PathParam("id") int id) {
         Clubs club = db.getByClubId(id);
         if(club != null) {
@@ -27,4 +25,26 @@ public class ClubResource {
         }
     }
 
+    @Override
+    public List<Clubs> list() {
+        return db.listAllClubs();
+    }
+
+    @DELETE
+    @Path("{id}")
+    @Override
+    public void deleteById(@PathParam("id") int id) {
+        db.deleteClubById(id);
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void add(Clubs club) {
+        db.addClub(club);
+    }
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void update(Clubs club) {
+        db.updateClub(club);
+    }
 }
