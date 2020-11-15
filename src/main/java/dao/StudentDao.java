@@ -23,6 +23,7 @@ public class StudentDao extends Dao<Student> {
         } finally {
             closeStatementAndConnection(pStatement, connection);
         }
+        System.out.println(st);
         return st;
     }
 

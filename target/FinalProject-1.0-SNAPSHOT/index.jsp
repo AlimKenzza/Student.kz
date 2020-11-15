@@ -9,7 +9,8 @@
 <html>
 <head>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <title>HELLO!</title>
     <link rel="stylesheet" href="css/form.css">
 </head>
@@ -29,7 +30,7 @@
         <button type="submit"><strong>SIGN UP</strong></button>
         <div class="container" style="background-color: #eee">
             <label style="padding-left: 15px">
-                <input type="checkbox"  checked="checked" name="remember"> Remember me
+                <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
             <span class="psw"><a href="#">Forgot password?</a></span>
         </div>
