@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!--
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="tableStyles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <title>Home Page</title>
+</head>
+<body>
+<!--
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <a class="navbar-brand" href="index.html">AITULife</a>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="book.jsp"></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="reader.jsp">Readers' Admin Page</a>
+        </li>
+    </ul>
+</nav>
+-->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="#">AITULife</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="reader.jsp">Readers' Admin Page</a></li>
+        <li><a href="book.jsp">Books' Page</a></li> 
+        <li><a href="#">Page 3</a></li> 
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron">
+    <h1 class="text-center">Hello, Aybar</h1>
+    <p class="text-center">The page where you can manipulate single book data</p>
+</div>
+<div class="container">
+
+    <h2 style="margin-top: 50px;" class="text-center">Clubs</h3>
+    <p class="text-center">The list of all clubs in the Astana IT University</p>
+    <div class="row">
+        <div class="table-responsive">
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Club Index</th>
+                    <th scope="col">Club Name</th>
+                    <th scope="col">Club Counter</th>
+                    <th scope="col">Club Admin</th>
+                    <th scrope="col">Visit</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Dean's Office</td>
+                    <td>2000</td>
+                    <td>Nursultan Khaimuldin</td>
+                    <td><a href="SBookServlet?bookid=${book.bookId}"><button type="button" class="btn btn-dark" id="deletebutton">Visit</button></a></td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+</div>
+
+<footer class="page-footer bg-primary text-light fixed-bottom footer navbar-fixed-bottom" style="height: 100px;">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3" style="padding: 50px;">© 2020 Copyright:
+      <a href="https://mdbootstrap.com/" class="text-decoration-none text-white">coltshifter.com</a>
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+
+
+
+
+<!-- jQuery library -->
+<!--
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+-->
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+
+<!-- Latest compiled JavaScript -->
+<!--
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
