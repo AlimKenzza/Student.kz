@@ -2,7 +2,9 @@ package dao;
 
 import model.News;
 
+import javax.enterprise.inject.New;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -115,6 +117,32 @@ public class NewsDao extends Dao<News> {
         } finally {
             closeStatementAndConnection(pStatement, connection);
         }
+        return news;
+    }
+
+
+    public ArrayList<News> getAllNewsByClubId(int clubId){
+        ArrayList<News> news = new ArrayList<>();
+        try{
+            getConnection();
+            query = "select post_id, title, body, clubs.club_id, postdate from clubs inner join news on clubs.club_id = news.club_id where clubs.club_id = ?;";
+            pStatement = connection.prepareStatement(query);
+            pStatement.setInt(1, clubId);
+            resultSet = pStatement.executeQuery();
+            while(resultSet.next()){
+                News hello = new News(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getInt(4),
+                        resultSet.getDate(5)
+                );
+                news.add(hello);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
         return news;
     }
 }

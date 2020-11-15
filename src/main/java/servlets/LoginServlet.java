@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/MainServlet");
         } else {
             request.setAttribute("errorMessage", "Incorrect username or password");
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("indexnew.jsp");
             requestDispatcher.forward(request, response);
         }
     }

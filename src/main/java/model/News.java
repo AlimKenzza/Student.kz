@@ -20,6 +20,7 @@ public class News {
         this.postDate = postDate;
     }
 
+
     public int getPostId() {
         return postId;
     }

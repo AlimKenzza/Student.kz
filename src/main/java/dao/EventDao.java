@@ -3,15 +3,13 @@ package dao;
 import model.Event;
 
 import java.sql.SQLException;
-import java.util.Date;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 public class EventDao extends Dao<Event> {
-    private final Queue<Event> events = new PriorityQueue<>();
+    private final List<Event> events = new ArrayList<>();
 
     @Override
-    public Queue<Event> fetch() {
+    public List<Event> fetch() {
         try {
             getConnection();
             query = "SELECT * From events";
