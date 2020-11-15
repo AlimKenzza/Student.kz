@@ -132,4 +132,109 @@ public class StudentDao extends Dao<Student> {
         }
         return student;
     }
+    public List<Student> getByYear(int course) {
+        try {
+            getConnection();
+            query = "SELECT * from complex WHERE course_year = ?";
+            pStatement = connection.prepareStatement(query);
+            pStatement.setInt(1,course);
+            resultSet = pStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("student_id");
+                String firstName = resultSet.getString("fname");
+                String lastName = resultSet.getString("lname");
+                String email = resultSet.getString("email");
+                int groupId = resultSet.getInt("group_id");
+                String groupName = resultSet.getString("group_name");
+                int courseYear = resultSet.getInt("course_year");
+                Student student = new Student();
+                student.setStudentId(id);
+                student.setFirstName(firstName);
+                student.setLastName(lastName);
+                student.setEmail(email);
+                student.setGroupId(groupId);
+                student.setGroupName(groupName);
+                student.setCourseYear(courseYear);
+                students.add(student);
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            closeStatementAndConnection(pStatement, connection);
+        }
+        return students;
+    }
+
+    public List<Student> getByGroup(int group) {
+        try {
+            getConnection();
+            query = "SELECT * from complex WHERE group_id = ?";
+            pStatement = connection.prepareStatement(query);
+            pStatement.setInt(1,group);
+            resultSet = pStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("student_id");
+                String firstName = resultSet.getString("fname");
+                String lastName = resultSet.getString("lname");
+                String email = resultSet.getString("email");
+                int groupId = resultSet.getInt("group_id");
+                String groupName = resultSet.getString("group_name");
+                int course = resultSet.getInt("course_year");
+                Student student = new Student();
+                student.setStudentId(id);
+                student.setFirstName(firstName);
+                student.setLastName(lastName);
+                student.setEmail(email);
+                student.setGroupId(groupId);
+                student.setGroupName(groupName);
+                student.setCourseYear(course);
+                students.add(student);
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            closeStatementAndConnection(pStatement, connection);
+        }
+        return students;
+    }
+    public List<Student> getByMajor(String major) {
+        try {
+            getConnection();
+            query = "SELECT * from student_view WHERE major = ?";
+            pStatement = connection.prepareStatement(query);
+            pStatement.setString(1,major);
+            resultSet = pStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("student_id");
+                String firstName = resultSet.getString("fname");
+                String lastName = resultSet.getString("lname");
+                String email = resultSet.getString("email");
+                int groupId = resultSet.getInt("group_id");
+                String groupName = resultSet.getString("group_name");
+                int course = resultSet.getInt("course_year");
+                String specialty = resultSet.getString("major");
+                Student student = new Student();
+                student.setStudentId(id);
+                student.setFirstName(firstName);
+                student.setLastName(lastName);
+                student.setEmail(email);
+                student.setGroupId(groupId);
+                student.setGroupName(groupName);
+                student.setCourseYear(course);
+                student.setMajor(specialty);
+                students.add(student);
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            closeStatementAndConnection(pStatement, connection);
+        }
+        return students;
+    }
 }

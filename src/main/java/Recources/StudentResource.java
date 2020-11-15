@@ -48,6 +48,44 @@ public class StudentResource implements MainResource {
     public void update(Student student) {
         dao.edit(student);
     }
+
+    @GET
+    @Path("/year/{course}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response  getByYear(@PathParam("course") int course) {
+        List<Student> students = dao.getByYear(course);
+        if(students != null) {
+            return Response.ok(students,MediaType.APPLICATION_JSON_TYPE).build();
+        }
+        else {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+    }
+
+    @GET
+    @Path("/group/{group}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response  getByGroup(@PathParam("group") int group) {
+        List<Student> students = dao.getByGroup(group);
+        if(students != null) {
+            return Response.ok(students,MediaType.APPLICATION_JSON_TYPE).build();
+        }
+        else {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+    }
+    @GET
+    @Path("/major/{major}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getByMajor(@PathParam("major") String major) {
+        List<Student> students = dao.getByMajor(major);
+        if(students != null) {
+            return Response.ok(students,MediaType.APPLICATION_JSON_TYPE).build();
+        }
+        else {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+    }
 }
 
 
