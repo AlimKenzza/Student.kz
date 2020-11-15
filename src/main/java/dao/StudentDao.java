@@ -135,7 +135,7 @@ public class StudentDao extends Dao<Student> {
     public List<Student> getByYear(int course) {
         try {
             getConnection();
-            query = "SELECT * from complex WHERE course_year = ?";
+            query = "SELECT * from student_view WHERE course_year = ?";
             pStatement = connection.prepareStatement(query);
             pStatement.setInt(1,course);
             resultSet = pStatement.executeQuery();
@@ -147,6 +147,7 @@ public class StudentDao extends Dao<Student> {
                 int groupId = resultSet.getInt("group_id");
                 String groupName = resultSet.getString("group_name");
                 int courseYear = resultSet.getInt("course_year");
+                String major = resultSet.getString("major");
                 Student student = new Student();
                 student.setStudentId(id);
                 student.setFirstName(firstName);
@@ -155,6 +156,7 @@ public class StudentDao extends Dao<Student> {
                 student.setGroupId(groupId);
                 student.setGroupName(groupName);
                 student.setCourseYear(courseYear);
+                student.setMajor(major);
                 students.add(student);
             }
         }

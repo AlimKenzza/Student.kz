@@ -50,7 +50,7 @@
     </div>
 </div>
 </header>
-<form action="/servlets.LogoutServlet">
+<form action="LogoutServlet">
     <input type="submit" name="submit" value="Logout">
 </form>
 <script src="javascript/navbar.js"></script>
