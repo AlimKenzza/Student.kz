@@ -76,5 +76,13 @@
     <input type="submit" name="submit" value="Logout">
 </form>
 <script src="javascript/navbar.js"></script>
+
+
+<h1>Welcome to The Hidden page of our website!</h1>
+<h3>Here you can manage here every process</h3>
+
+<table>
+
+</table>
 </body>
 </html>

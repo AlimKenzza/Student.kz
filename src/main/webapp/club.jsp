@@ -15,10 +15,11 @@
     <a class="navbar-brand" href="index.html">AITULife</a>
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" href="book.jsp"></a>
+            <a class="nav-link" href="#">Clubs</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="reader.jsp">Readers' Admin Page</a>
+            <a class="nav-link" href="events.jsp">Events</a>
+        </li>
         </li>
     </ul>
 </nav>
