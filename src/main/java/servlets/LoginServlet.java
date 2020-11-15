@@ -18,6 +18,7 @@ public class LoginServlet extends HttpServlet {
         if (dao.checkStudent(username, password)) {
             HttpSession session = request.getSession(true);
             session.setAttribute("username", username);
+            System.out.println(session);
             Cookie websiteVisitCounter = new Cookie("counter", "1");
             websiteVisitCounter.setMaxAge(3600);
             response.addCookie(websiteVisitCounter);
