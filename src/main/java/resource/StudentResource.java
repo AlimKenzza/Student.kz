@@ -12,6 +12,16 @@ import java.util.List;
 public class StudentResource implements MainResource<Student> {
     private final StudentDao dao = new StudentDao();
 
+    @POST
+    @Path("/users")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public int addUser(@FormParam("username") String username,@FormParam("email") String email,@FormParam("password") String password){
+        System.out.println(dao.addUser(username,email,password));
+        return dao.addUser(username,email,password);
+    }
+
+
+
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)

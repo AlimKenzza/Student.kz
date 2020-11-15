@@ -8,24 +8,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-@WebServlet(name = "LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "RegistrationServlet")
+public class RegistrationServlet extends HttpServlet {
     StudentDao dao = new StudentDao();
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
+        String email = request.getParameter("email");
         String password = request.getParameter("password");
-        if (dao.checkStudent(username, password)) {
-            HttpSession session = request.getSession(true);
-            session.setAttribute("username", username);
-            System.out.println(session);
-            Cookie websiteVisitCounter = new Cookie("counter", "1");
-            websiteVisitCounter.setMaxAge(3600);
-            response.addCookie(websiteVisitCounter);
-            response.sendRedirect(request.getContextPath() + "/MainServlet");
+        if (!dao.checkIfLoginExist(username)) {
+            dao.addUser(username,password,email);
+            System.out.println("Registered successfully");
+            request.setAttribute("errorMessage", "Registered successfully");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+            requestDispatcher.forward(request, response);
         } else {
-            request.setAttribute("errorMessage", "Incorrect username or password");
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("indexnew.jsp");
+            request.setAttribute("errorMessage", "Username already exists");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("registration.jsp");
             requestDispatcher.forward(request, response);
         }
     }
