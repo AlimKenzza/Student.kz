@@ -1,3 +1,4 @@
+<%@ page import="java.io.PrintWriter" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -10,6 +11,27 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 </head>
 <body>
+
+<%
+    Cookie[] cookies = request.getCookies();
+    int counter;
+    for (Cookie cookie : cookies) {
+        if (cookie.getName().equals("counter")) {
+            counter = Integer.parseInt(cookie.getValue());
+            counter++;
+            cookie.setValue(counter + "");
+            response.addCookie(cookie);
+        }
+    }
+
+    Cookie[] newCookies = request.getCookies();
+    PrintWriter pw = response.getWriter();
+    for (Cookie cookie : newCookies) {
+        if (cookie.getName().equals("counter")) {
+            pw.println("This session visited website " + cookie.getValue() + " times (Cookie)");
+        }
+    }
+%>
 
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
     <a class="navbar-brand" href="index.html">AITULife</a>

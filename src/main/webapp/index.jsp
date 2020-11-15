@@ -15,6 +15,19 @@
     <link rel="stylesheet" href="css/form.css">
 </head>
 <body>
+
+<%
+    Cookie[] cookies = request.getCookies();
+    int counter;
+    for (Cookie cookie : cookies) {
+        if (cookie.getName().equals("counter")) {
+            counter = Integer.parseInt(cookie.getValue());
+            counter++;
+            cookie.setValue(counter + "");
+            response.addCookie(cookie);
+        }
+    }
+%>
 <form action="LoginServlet" method="post">
     <h1>SIGN UP</h1>
     <div class="icon">
