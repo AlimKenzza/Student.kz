@@ -9,6 +9,41 @@ import java.util.List;
 public class StudentDao extends Dao<Student> {
     private final List<Student> students = new ArrayList<>();
 
+    public int addUser(String username, String password, String email){
+        try{
+            getConnection();
+            pStatement = connection.prepareStatement("INSERT INTO users VALUES(?,?,?)");
+            pStatement.setString(1,username);
+            pStatement.setString(2,password);
+            pStatement.setString(3,email);
+            return pStatement.executeUpdate();
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+        }
+        return 0;
+    }
+
+    public boolean checkIfLoginExist(String username){
+        boolean st = false;
+        try {
+            getConnection();
+            pStatement = connection.prepareStatement("SELECT username FROM users WHERE username = ?");
+            pStatement.setString(1, username);
+            resultSet = pStatement.executeQuery();
+            st = resultSet.next();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeStatementAndConnection(pStatement, connection);
+        }
+        System.out.println(st);
+        return st;
+
+    }
+
+
     public boolean checkStudent(String username, String password) {
         boolean st = false;
         try {
