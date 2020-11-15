@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class ClubDao extends Dao<Club> {
-    Stack<Club> clubs = new Stack<>();
+    private final Stack<Club> clubs = new Stack<>();
 
     @Override
     public Stack<Club> fetch() {

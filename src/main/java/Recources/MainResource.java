@@ -1,11 +1,10 @@
 package Recources;
 
-import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
-import java.util.List;
+import java.util.Collection;
 
-public interface MainResource {
+public interface MainResource<T> {
     Response get(int id);
-    List list();
+    Collection<T> list();
     void deleteById(int id);
 }

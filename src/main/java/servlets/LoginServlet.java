@@ -14,15 +14,15 @@ import java.io.IOException;
 @WebServlet(name = "LoginServlet")
 public class LoginServlet extends HttpServlet {
     StudentDao dao = new StudentDao();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        if(dao.checkStudent(username,password)) {
+        if (dao.checkStudent(username, password)) {
             HttpSession session = request.getSession(true);
             session.setAttribute("username", username);
             response.sendRedirect(request.getContextPath() + "/MainServlet");
-        }
-        else {
+        } else {
             request.setAttribute("errorMessage", "Incorrect username or password");
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
             requestDispatcher.forward(request, response);

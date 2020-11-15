@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentDao extends Dao<Student> {
-    List<Student> students = new ArrayList<>();
+    private final List<Student> students = new ArrayList<>();
 
     public boolean checkStudent(String username, String password) {
         boolean st = false;

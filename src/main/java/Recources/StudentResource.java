@@ -9,8 +9,8 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/students")
-public class StudentResource implements MainResource {
-    private StudentDao dao = new StudentDao();
+public class StudentResource implements MainResource<Student> {
+    private final StudentDao dao = new StudentDao();
 
     @GET
     @Path("{id}")
@@ -38,11 +38,13 @@ public class StudentResource implements MainResource {
     public List<Student> list() {
         return dao.fetch();
     }
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void addStudent(Student student) {
         dao.add(student);
     }
+
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public void update(Student student) {
@@ -52,12 +54,11 @@ public class StudentResource implements MainResource {
     @GET
     @Path("/year/{course}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response  getByYear(@PathParam("course") int course) {
+    public Response getByYear(@PathParam("course") int course) {
         List<Student> students = dao.getByYear(course);
-        if(students != null) {
-            return Response.ok(students,MediaType.APPLICATION_JSON_TYPE).build();
-        }
-        else {
+        if (students != null) {
+            return Response.ok(students, MediaType.APPLICATION_JSON_TYPE).build();
+        } else {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
     }
@@ -65,24 +66,23 @@ public class StudentResource implements MainResource {
     @GET
     @Path("/group/{group}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response  getByGroup(@PathParam("group") int group) {
+    public Response getByGroup(@PathParam("group") int group) {
         List<Student> students = dao.getByGroup(group);
-        if(students != null) {
-            return Response.ok(students,MediaType.APPLICATION_JSON_TYPE).build();
-        }
-        else {
+        if (students != null) {
+            return Response.ok(students, MediaType.APPLICATION_JSON_TYPE).build();
+        } else {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
     }
+
     @GET
     @Path("/major/{major}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getByMajor(@PathParam("major") String major) {
         List<Student> students = dao.getByMajor(major);
-        if(students != null) {
-            return Response.ok(students,MediaType.APPLICATION_JSON_TYPE).build();
-        }
-        else {
+        if (students != null) {
+            return Response.ok(students, MediaType.APPLICATION_JSON_TYPE).build();
+        } else {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
     }

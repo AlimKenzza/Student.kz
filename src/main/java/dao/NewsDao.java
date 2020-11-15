@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class NewsDao extends Dao<News> {
-    List<News> newsList = new LinkedList<>();
+    private final List<News> newsList = new LinkedList<>();
 
     @Override
     public List<News> fetch() {

@@ -1,25 +1,25 @@
 package Recources;
 
-import dao.ClubDao;
-import model.Club;
+import dao.EventDao;
+import model.Event;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.Stack;
+import java.util.Queue;
 
-@Path("/clubs")
-public class ClubResource implements MainResource<Club> {
-    private final ClubDao dao = new ClubDao();
+@Path("/events")
+public class EventResource implements MainResource<Event> {
+    private final EventDao dao = new EventDao();
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Override
     public Response get(@PathParam("id") int id) {
-        Club club = dao.get(id);
-        if (club != null) {
-            return Response.ok(club, MediaType.APPLICATION_JSON_TYPE).build();
+        Event event = dao.get(id);
+        if (event != null) {
+            return Response.ok(event, MediaType.APPLICATION_JSON_TYPE).build();
         } else {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
@@ -28,7 +28,7 @@ public class ClubResource implements MainResource<Club> {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Override
-    public Stack<Club> list() {
+    public Queue<Event> list() {
         return dao.fetch();
     }
 
@@ -41,13 +41,13 @@ public class ClubResource implements MainResource<Club> {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void add(Club club) {
-        dao.add(club);
+    public void add(Event event) {
+        dao.add(event);
     }
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public void update(Club club) {
-        dao.edit(club);
+    public void update(Event event) {
+        dao.edit(event);
     }
 }
