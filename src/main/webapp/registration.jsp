@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/form.css">
 </head>
 <body>
-<form action="LoginServlet" method="post">
+<form action="RegistrationServlet" method="post">
     <h1>Registration</h1>
     <div class="icon">
         <i class="fas fa-user-circle"></i>

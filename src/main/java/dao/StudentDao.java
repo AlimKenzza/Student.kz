@@ -12,7 +12,7 @@ public class StudentDao extends Dao<Student> {
     public int addUser(String username, String password, String email){
         try{
             getConnection();
-            pStatement = connection.prepareStatement("INSERT INTO users VALUES(?,?,?)");
+            pStatement = connection.prepareStatement("INSERT INTO users(username,password,email) VALUES(?,?,?)");
             pStatement.setString(1,username);
             pStatement.setString(2,password);
             pStatement.setString(3,email);

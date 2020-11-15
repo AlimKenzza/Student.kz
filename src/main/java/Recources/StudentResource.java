@@ -12,19 +12,14 @@ import java.util.List;
 public class StudentResource implements MainResource<Student> {
     private final StudentDao dao = new StudentDao();
 
-    @PUT
+    @POST
     @Path("/users")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public int addUser(@FormParam("username") String username,@FormParam("email") String email,@FormParam("password") String password){
+        System.out.println(dao.addUser(username,email,password));
         return dao.addUser(username,email,password);
     }
 
-    @GET
-    @Path("/users")
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public boolean checkIfLoginExist(@FormParam("username") String username){
-        return dao.checkIfLoginExist(username);
-    }
 
 
     @GET
