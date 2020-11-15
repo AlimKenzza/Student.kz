@@ -20,13 +20,16 @@
         <li class="nav-item">
             <a class="nav-link" href="events.jsp">Events</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="LogoutServlet">Log-out</a>
+        </li>
 
 
     </ul>
 </nav>
 <div class="jumbotron">
     <h1 class="text-center">Hello, ${sessionScope.username}</h1>
-    <p class="text-center">The page where you can manipulate single book data</p>
+    <p class="text-center">The page where you can see data about clubs</p>
 </div>
 <div class="container">
 

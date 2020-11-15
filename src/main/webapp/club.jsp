@@ -20,18 +20,20 @@
         <li class="nav-item">
             <a class="nav-link" href="events.jsp">Events</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="LogoutServlet">Log-out</a>
         </li>
     </ul>
 </nav>
 <div class="jumbotron">
-    <h1 class="text-center">Dean's Office</h1>
-    <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore reiciendis quis accusamus distinctio. Officiis aspernatur aperiam asperiores. Quos magnam facilis voluptatem quisquam, molestias beatae exercitationem. Deleniti illo repellendus consectetur amet.</p>
+    <h1 class="text-center">${requestScope.clubforclubs.clubName}</h1>
+    <p class="text-center">The page of the single club</p>
 </div>
 <div class="container mb-5">
 
 
         <h2 style="margin-top: 50px" class="text-center">News</h2>
-        <p class="text-center">The list of all news of Dean's office</p>
+        <p class="text-center">The list of all news of ${requestScope.clubforclubs.clubName}'s office</p>
 
 
     <c:forEach items="${requestScope.newsbyclubs}" var="obj">

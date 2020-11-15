@@ -33,6 +33,9 @@
         <li class="nav-item">
             <a class="nav-link" href="#">Events</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="LogoutServlet">Log-out</a>
+        </li>
 
     </ul>
 </nav>
@@ -43,7 +46,7 @@
 <div class="container mb-5 d-flex flex-column align-items-center" id="main">
 
     <h2 style="margin-top: 50px;" class="text-center">Events</h2>
-        <p class="text-center">The list of all events of Dean's office</p>
+        <p class="text-center">The list of all events of the University</p>
 
 
 

@@ -21,8 +21,10 @@ public class ClubServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int clubId = Integer.parseInt(request.getParameter("clubid"));
         NewsDao newsDao = new NewsDao();
+        ClubDao clubDao = new ClubDao();
         ArrayList<News> news = newsDao.getAllNewsByClubId(clubId);
         request.setAttribute("newsbyclubs", news);
+        request.setAttribute("clubforclubs", clubDao.get(clubId));
         request.getRequestDispatcher("club.jsp").forward(request,response);
     }
 }
