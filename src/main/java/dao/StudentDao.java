@@ -66,17 +66,27 @@ public class StudentDao extends Dao<Student> {
     public List<Student> fetch() {
         try {
             getConnection();
-            query = "SELECT * From students";
+            query = "SELECT * From student_view";
             pStatement = connection.prepareStatement(query);
             resultSet = pStatement.executeQuery();
             while (resultSet.next()) {
-                int id = resultSet.getInt(1);
-                String firstName = resultSet.getString(2);
-                String lastName = resultSet.getString(3);
-                String email = resultSet.getString(4);
-                int groupId = resultSet.getInt(5);
-
-                Student student = new Student(id, firstName, lastName, email, groupId);
+                int id = resultSet.getInt("student_id");
+                String firstName = resultSet.getString("fname");
+                String lastName = resultSet.getString("lname");
+                String email = resultSet.getString("email");
+                int groupId = resultSet.getInt("group_id");
+                String groupName = resultSet.getString("group_name");
+                int courseYear = resultSet.getInt("course_year");
+                String major = resultSet.getString("major");
+                Student student = new Student();
+                student.setStudentId(id);
+                student.setFirstName(firstName);
+                student.setLastName(lastName);
+                student.setEmail(email);
+                student.setGroupId(groupId);
+                student.setGroupName(groupName);
+                student.setCourseYear(courseYear);
+                student.setMajor(major);
                 students.add(student);
             }
         } catch (Exception e) {

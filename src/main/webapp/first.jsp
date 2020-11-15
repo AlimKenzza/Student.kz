@@ -25,14 +25,6 @@
             response.addCookie(cookie);
         }
     }
-
-    Cookie[] newCookies = request.getCookies();
-    PrintWriter pw = response.getWriter();
-    for (Cookie cookie : newCookies) {
-        if (cookie.getName().equals("counter")) {
-            pw.println("This session visited website " + cookie.getValue() + " times (Cookie)");
-        }
-    }
 %>
 
 

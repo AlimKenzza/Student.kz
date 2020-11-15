@@ -11,6 +11,19 @@
 </head>
 <body>
 
+<%
+    Cookie[] cookies = request.getCookies();
+    int counter;
+    for (Cookie cookie : cookies) {
+        if (cookie.getName().equals("counter")) {
+            counter = Integer.parseInt(cookie.getValue());
+            counter++;
+            cookie.setValue(counter + "");
+            response.addCookie(cookie);
+        }
+    }
+%>
+
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
     <a class="navbar-brand" href="index.html">AITULife</a>
     <ul class="navbar-nav">

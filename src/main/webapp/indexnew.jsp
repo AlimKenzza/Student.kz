@@ -22,6 +22,19 @@
 <!--===============================================================================================-->
 </head>
 <body>
+
+<%
+	Cookie[] cookies = request.getCookies();
+	int counter;
+	for (Cookie cookie : cookies) {
+		if (cookie.getName().equals("counter")) {
+			counter = Integer.parseInt(cookie.getValue());
+			counter++;
+			cookie.setValue(counter + "");
+			response.addCookie(cookie);
+		}
+	}
+%>
 	
 	<div class="limiter">
 		<div class="container-login100">
