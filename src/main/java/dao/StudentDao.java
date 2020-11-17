@@ -230,6 +230,7 @@ public class StudentDao extends Dao<Student> {
                 int groupId = resultSet.getInt("group_id");
                 String groupName = resultSet.getString("group_name");
                 int course = resultSet.getInt("course_year");
+                String specialty = resultSet.getString("major");
                 Student student = new Student();
                 student.setStudentId(id);
                 student.setFirstName(firstName);
@@ -238,6 +239,7 @@ public class StudentDao extends Dao<Student> {
                 student.setGroupId(groupId);
                 student.setGroupName(groupName);
                 student.setCourseYear(course);
+                student.setMajor(specialty);
                 students.add(student);
             }
         }
@@ -255,6 +257,78 @@ public class StudentDao extends Dao<Student> {
             query = "SELECT * from student_view WHERE major = ?";
             pStatement = connection.prepareStatement(query);
             pStatement.setString(1,major);
+            resultSet = pStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("student_id");
+                String firstName = resultSet.getString("fname");
+                String lastName = resultSet.getString("lname");
+                String email = resultSet.getString("email");
+                int groupId = resultSet.getInt("group_id");
+                String groupName = resultSet.getString("group_name");
+                int course = resultSet.getInt("course_year");
+                String specialty = resultSet.getString("major");
+                Student student = new Student();
+                student.setStudentId(id);
+                student.setFirstName(firstName);
+                student.setLastName(lastName);
+                student.setEmail(email);
+                student.setGroupId(groupId);
+                student.setGroupName(groupName);
+                student.setCourseYear(course);
+                student.setMajor(specialty);
+                students.add(student);
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            closeStatementAndConnection(pStatement, connection);
+        }
+        return students;
+    }
+    public List<Student> getByFname(String fname) {
+        try {
+            getConnection();
+            query = "SELECT * from student_view WHERE fname = ?";
+            pStatement = connection.prepareStatement(query);
+            pStatement.setString(1,fname);
+            resultSet = pStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("student_id");
+                String firstName = resultSet.getString("fname");
+                String lastName = resultSet.getString("lname");
+                String email = resultSet.getString("email");
+                int groupId = resultSet.getInt("group_id");
+                String groupName = resultSet.getString("group_name");
+                int course = resultSet.getInt("course_year");
+                String specialty = resultSet.getString("major");
+                Student student = new Student();
+                student.setStudentId(id);
+                student.setFirstName(firstName);
+                student.setLastName(lastName);
+                student.setEmail(email);
+                student.setGroupId(groupId);
+                student.setGroupName(groupName);
+                student.setCourseYear(course);
+                student.setMajor(specialty);
+                students.add(student);
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            closeStatementAndConnection(pStatement, connection);
+        }
+        return students;
+    }
+    public List<Student> getByLname(String lname) {
+        try {
+            getConnection();
+            query = "SELECT * from student_view WHERE lname = ?";
+            pStatement = connection.prepareStatement(query);
+            pStatement.setString(1,lname);
             resultSet = pStatement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("student_id");

@@ -96,6 +96,28 @@ public class StudentResource implements MainResource<Student> {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
     }
+    @GET
+    @Path("/firstname/{firstname}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getByFname(@PathParam("firstname") String fname) {
+        List<Student> students = dao.getByFname(fname);
+        if (students != null) {
+            return Response.ok(students, MediaType.APPLICATION_JSON_TYPE).build();
+        } else {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+    }
+    @GET
+    @Path("/lastname/{lastname}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getByLname(@PathParam("lastname") String lname) {
+        List<Student> students = dao.getByLname(lname);
+        if (students != null) {
+            return Response.ok(students, MediaType.APPLICATION_JSON_TYPE).build();
+        } else {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+    }
 }
 
 

@@ -1,7 +1,11 @@
 package servlets;
 
 import dao.ClubDao;
+import dao.EventDao;
+import dao.StudentDao;
 import model.Club;
+import model.Event;
+import model.Student;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,7 +25,17 @@ public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
         if (session.getAttribute("username").equals("admin")) {
-            request.getRequestDispatcher("first.jsp").forward(request, response);
+            StudentDao studentDao = new StudentDao();
+            ArrayList<Student> students = new ArrayList<>(studentDao.fetch());
+            request.setAttribute("students", students);
+            ClubDao clubDao = new ClubDao();
+            ArrayList<Club> clubs = new ArrayList<>(clubDao.fetch());
+            request.setAttribute("clubs", clubs);
+            request.getRequestDispatcher("admin.jsp").forward(request, response);
+            EventDao eventDao = new EventDao();
+            ArrayList<Event> events = new ArrayList<>(eventDao.fetch());
+            request.setAttribute("events", events);
+
         } else {
             ClubDao clubDao = new ClubDao();
             ArrayList<Club> clubs = new ArrayList<>(clubDao.fetch());

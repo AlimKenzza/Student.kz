@@ -39,4 +39,12 @@
         <servlet-name>ClubServlet</servlet-name>
         <url-pattern>/ClubServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>AdminServlet</servlet-name>
+        <servlet-class>servlets.AdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminServlet</servlet-name>
+        <url-pattern>/AdminServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
