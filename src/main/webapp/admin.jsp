@@ -157,6 +157,8 @@
 
         </div>
 
+        
+        <!-- events -->
         <div class="container">
 
             <h2 style="margin-top: 50px;" class="text-center">Events</h2>
