@@ -24,20 +24,32 @@
     }
 %>
 
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-    <a class="navbar-brand" href="index.html">AITULife</a>
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="#">Clubs</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="events.jsp">Events</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="LogoutServlet">Log-out</a>
-        </li>
-    </ul>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="main.jsp">AITULife</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="MainServlet">Clubs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="events.jsp">Events</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="LogoutServlet">Log-out</a>
+            </li>
+        </ul>
+    </div>
 </nav>
+
+
 <div class="jumbotron">
     <h1 class="text-center">${requestScope.clubforclubs.clubName}</h1>
     <p class="text-center">The page of the single club</p>
@@ -45,8 +57,8 @@
 <div class="container mb-5">
 
 
-        <h2 style="margin-top: 50px" class="text-center">News</h2>
-        <p class="text-center">The list of all news of ${requestScope.clubforclubs.clubName}'s office</p>
+    <h2 style="margin-top: 50px" class="text-center">News</h2>
+    <p class="text-center">The list of all news of ${requestScope.clubforclubs.clubName}'s office</p>
 
 
     <c:forEach items="${requestScope.newsbyclubs}" var="obj">
@@ -63,7 +75,7 @@
 </div>
 
 
-<footer class="page-footer bg-primary text-light">
+<footer class="page-footer bg-primary text-light fixed-bottom">
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2020 Copyright:

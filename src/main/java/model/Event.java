@@ -1,10 +1,13 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Event {
     private int eventId;
     private String eventName;
+    @JsonFormat(pattern="dd.MM.yyyy")
     private Date eventDate;
     private int eventCost;
 

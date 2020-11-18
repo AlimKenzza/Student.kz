@@ -1,5 +1,7 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class News {
@@ -7,6 +9,7 @@ public class News {
     private String title;
     private String body;
     private int clubId;
+    @JsonFormat(pattern="dd.MM.yyyy")
     private Date postDate;
 
     public News() {

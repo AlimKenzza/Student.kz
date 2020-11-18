@@ -127,6 +127,7 @@ public class StudentDao extends Dao<Student> {
             pStatement.setString(2, student.getLastName());
             pStatement.setString(3, student.getEmail());
             pStatement.setInt(4, student.getGroupId());
+            pStatement.setInt(5, student.getStudentId());
             pStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

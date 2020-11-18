@@ -31,10 +31,10 @@ public class MainServlet extends HttpServlet {
             ClubDao clubDao = new ClubDao();
             ArrayList<Club> clubs = new ArrayList<>(clubDao.fetch());
             request.setAttribute("clubs", clubs);
-            request.getRequestDispatcher("admin.jsp").forward(request, response);
             EventDao eventDao = new EventDao();
             ArrayList<Event> events = new ArrayList<>(eventDao.fetch());
             request.setAttribute("events", events);
+            request.getRequestDispatcher("admin.jsp").forward(request, response);
 
         } else {
             ClubDao clubDao = new ClubDao();
