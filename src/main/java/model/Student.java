@@ -21,6 +21,13 @@ public class Student {
         this.groupId = groupId;
     }
 
+    public Student(String firstName, String lastName, String email, int groupId) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.groupId = groupId;
+    }
+
     public int getStudentId() {
         return studentId;
     }

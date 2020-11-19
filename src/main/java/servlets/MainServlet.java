@@ -25,16 +25,16 @@ public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
         if (session.getAttribute("username").equals("admin")) {
-            StudentDao studentDao = new StudentDao();
-            ArrayList<Student> students = new ArrayList<>(studentDao.fetch());
-            request.setAttribute("students", students);
-            ClubDao clubDao = new ClubDao();
-            ArrayList<Club> clubs = new ArrayList<>(clubDao.fetch());
-            request.setAttribute("clubs", clubs);
-            EventDao eventDao = new EventDao();
-            ArrayList<Event> events = new ArrayList<>(eventDao.fetch());
-            request.setAttribute("events", events);
-            request.getRequestDispatcher("admin.jsp").forward(request, response);
+//            StudentDao studentDao = new StudentDao();
+//            ArrayList<Student> students = new ArrayList<>(studentDao.fetch());
+//            request.setAttribute("students", students);
+//            ClubDao clubDao = new ClubDao();
+//            ArrayList<Club> clubs = new ArrayList<>(clubDao.fetch());
+//            request.setAttribute("clubs", clubs);
+//            EventDao eventDao = new EventDao();
+//            ArrayList<Event> events = new ArrayList<>(eventDao.fetch());
+//            request.setAttribute("events", events);
+            request.getRequestDispatcher("student-list.jsp").forward(request, response);
 
         } else {
             ClubDao clubDao = new ClubDao();
